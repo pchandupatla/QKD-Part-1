@@ -1,5 +1,5 @@
 // TODO: Put your name here.
-// Name: 
+// Name: Pranav Chandupatla and Anshul Kumar
 
 import java.util.Arrays;
 import java.util.Random;
