@@ -1,5 +1,7 @@
 import java.util.Random;
 
+//authors: Dr. Brian La Cour and Dr. Noah Davis
+
 public final class Qubit{
 
     private Complex alpha;  // |H> component

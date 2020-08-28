@@ -1,5 +1,5 @@
-// TODO: Put your name here.
 // Name: Pranav Chandupatla and Anshul Kumar
+// Qubit.java and Complex.java provided by Dr. Brian La Cour and Dr. Noah Davis
 
 import java.util.Arrays;
 import java.util.Random;
@@ -28,7 +28,6 @@ public class qkd1{
 
         // Alice chooses the encoding basis for each key bit.
 	// This should be a string of '+'s and 'x's with '+'=H/V, 'x'=D/A.
-	// TODO: Put your code here.
 		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < n; i++) {
 			if(rand.nextInt(2) == 0)
@@ -47,7 +46,6 @@ public class qkd1{
 	// Alice selects a qubit state according to the key and basis.
 	// This should be a string of the characters 'H', 'V', 'D', 'A'.
 	builder.setLength(0);
-	// TODO: Put your code here.
 		for (int i = 0; i < n; i++)
 		{
 			char keyBit = keyAlice.charAt(i);
@@ -79,12 +77,10 @@ public class qkd1{
 	System.out.println("qubitAlice  = " + qubitAlice);
 
 	// Alice prepares and sends each qubit.
-	// Use the methods of the Qubit class to prepare each qubit.
         Qubit[] qubitArray = new Qubit[n]; // Declare an array of Qubits.
         for (int i=0; i<n; i++) {
             qubitArray[i] = new Qubit();   // Initialize qubitArray.
 	}
-	// TODO: Put your code here.
 		for (int i = 0; i < n; i++)
 		{
 			Qubit q = new Qubit();
@@ -100,13 +96,11 @@ public class qkd1{
 			}
 			qubitArray[i] = q;
 		}
-	// You may use the toString() method to verify the prepared qubits.
 		//System.out.println(Arrays.toString(qubitArray));
 	// Eve   --------------------------------------------
 	// You should implement this section after completing Alice and Bob.
 
 	// Eve chooses a basis to measure each qubit.
-	// TODO: Put your code here.
 		builder.setLength(0);
 		for (int i = 0; i < n; i++) {
 			if(rand.nextInt(2) == 0)
@@ -125,7 +119,6 @@ public class qkd1{
 	// Eve performs a measurement on each qubit.
 	// (This is similar to what Bob does.)
 
-	// TODO: Put your code here.
 		builder.setLength(0);
 		for (int i = 0; i < n; i++)
 		{
@@ -144,11 +137,9 @@ public class qkd1{
 		String outcomeEve = builder.toString();
         System.out.println("outcomeEve  = " + outcomeEve);
 
-		// TODO: Put your code here.
 
 	// Eve resends qubits to Bob.
 	// (This is similar to what Alice does.)
-	// TODO: Put your code here.
 		for (int i = 0; i < n; i++)
 		{
 			Qubit q = new Qubit();
@@ -170,7 +161,6 @@ public class qkd1{
 
         // Bob chooses a basis to measure each qubit.
 	// (This is similar to what Alice does.)
-	// TODO: Put your code here.
 		builder.setLength(0);
 		for (int i = 0; i < n; i++) {
 			if(rand.nextInt(2) == 0)
@@ -188,7 +178,6 @@ public class qkd1{
 	// Bob performs a measurement on each qubit.
 	// Use the methods of the Qubit class to measure each qubit.
 		builder.setLength(0);
-	// TODO: Put your code here.
 		for (int i = 0; i < n; i++)
 		{
 			Qubit q = qubitArray[i];
@@ -224,7 +213,6 @@ public class qkd1{
 			}
 		}
 	String keyBob = builder.toString();
-	// TODO: Put your code here.
 	System.out.println("keyBob      = " + keyBob);
         // Only about half of Bob's raw key with match Alice's raw key.
 
@@ -249,44 +237,27 @@ public class qkd1{
 				builderTwo.append(bobBit);
 			}
 		}
-	String siftedAlice = builder.toString();
-	String siftedBob   = builderTwo.toString();
-	// TODO: Put your code here.
-	System.out.println("siftedAlice = " + siftedAlice);
-	System.out.println("siftedBob   = " + siftedBob);
+		String siftedAlice = builder.toString();
+		String siftedBob   = builderTwo.toString();
+		// TODO: Put your code here.
+		System.out.println("siftedAlice = " + siftedAlice);
+		System.out.println("siftedBob   = " + siftedBob);
 
-	// Compare Alice and Bob's sifted keys.
-        int numMatch = 0;
-	double matchPercent;
-	if ( siftedAlice.length() != siftedBob.length() ) {
-	    System.out.println("Sifted keys are different lengths!");
-	}
-	else {
-	    for (int i=0; i<siftedAlice.length(); i++) {
-		if ( siftedAlice.charAt(i) == siftedBob.charAt(i) ) {
-		    numMatch += 1;
+		// Compare Alice and Bob's sifted keys.
+			int numMatch = 0;
+		double matchPercent;
+		if ( siftedAlice.length() != siftedBob.length() ) {
+			System.out.println("Sifted keys are different lengths!");
 		}
-	    }
-	    matchPercent = (double) numMatch  /siftedAlice.length() * 100;
-	    System.out.println(Double.toString(matchPercent) + "% match");
-	}
-	// Without Eve, you should expect a 100% match.
-	// With Eve present, this will drop to about 75%.
-	// (Using a larger value of n will give better statistics.)
-
-	// Sample Output ---------------------------------------------
-	// keyAlice    = 0101100000
-	// basisAlice  = +x+x++++x+
-		// qubitAlice  = HAHAVHHHDH
-        // basisEve    = x++xx+x+++
-        // outcomeEve  = DVHADHAHHH
-        // basisBob    = x+xx+x++xx
-        // outcomeBob  = DVDAHDVHDA
-	// keyBob      = 0101001001
-	// siftedAlice = 11000
-	// siftedBob   = 10100
-	// 60.0% match
-	// -----------------------------------------------------------
+		else {
+			for (int i=0; i<siftedAlice.length(); i++) {
+			if ( siftedAlice.charAt(i) == siftedBob.charAt(i) ) {
+				numMatch += 1;
+			}
+			}
+			matchPercent = (double) numMatch  /siftedAlice.length() * 100;
+			System.out.println(Double.toString(matchPercent) + "% match");
+		}
     }
 
 }

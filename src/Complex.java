@@ -1,5 +1,7 @@
 import static java.lang.Math.*;
 
+//authors: Dr. Brian La Cour and Dr. Noah Davis
+
 public class Complex {
 
     private double x;
